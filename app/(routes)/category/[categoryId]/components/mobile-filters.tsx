@@ -19,10 +19,12 @@ const MobileFilters = ({ sizes = [], colors = [] }: Props) => {
 
   return (
     <>
-      <Button className="flex items-center gap-x-2 lg:hidden" onClick={onOpen}>
-        Filters
-        <Plus />
-      </Button>
+      <div className="flex justify-center lg:hidden">
+        <Button className="flex items-center gap-x-2" onClick={onOpen}>
+          Filters
+          <Plus />
+        </Button>
+      </div>
       <Transition show={open} as={Fragment}>
         <Dialog onClose={onClose} className="relative z-50 lg:hidden">
           <Transition.Child

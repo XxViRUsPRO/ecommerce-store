@@ -30,7 +30,7 @@ const Summary = (props: Props) => {
 
   const onCheckout = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_STORE_ID}/checkout`,
       {
         productIds: items.map((item) => item.id),
       }

@@ -1,15 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { MouseEventHandler } from "react";
 
 import { Product } from "@/types";
 import Currency from "./ui/currency";
 import { Button } from "./ui/button";
 import { ShoppingCart } from "lucide-react";
+import useCart from "@/hooks/use-cart";
 
 type Props = {
   data: Product;
 };
 
 const Info = ({ data }: Props) => {
+  const cart = useCart();
+
+  const onAdd2Cart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+
+    cart.addItem(data);
+  };
+
   return (
     <div className="text-neutral-950">
       <h3 className="text-4xl font-bold">{data.name}</h3>
@@ -35,7 +46,7 @@ const Info = ({ data }: Props) => {
         </div>
       </div>
       <div className="mt-10">
-        <Button className="flex items-center gap-x-2">
+        <Button className="flex items-center gap-x-2" onClick={onAdd2Cart}>
           Add to cart <ShoppingCart />
         </Button>
       </div>

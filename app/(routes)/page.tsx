@@ -10,7 +10,9 @@ export const revalidate = 0;
 
 export default async function HomePage() {
   const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard("2b858735-3c9d-4234-8860-11b42a79d03d");
+  const billboard = await getBillboard(
+    process.env.NEXT_PUBLIC_MAIN_BILLBOARD_ID!
+  );
 
   return (
     <Container>
